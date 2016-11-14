@@ -17,7 +17,10 @@ public class Admin {
     
     public static Admin getInstance() {
         if (instance == null) {
-            instance = new Admin();
+            synchronized(Admin.class) {
+                if (instance == null) {
+                    instance = new Admin();
+                }
         }
         return instance;
     }
